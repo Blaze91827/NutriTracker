@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:NutriTracker"
+             x:Class="NutriTracker.Views.MainView" 
+             Title="NutriTracker!">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddItem}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Text="Toggle filter" />
+
+        <ListView Grid.Row="1"
+          RowHeight="70"
+          ItemsSource="{Binding Items}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="15,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Grid.RowSpan="2" />
+                        <Label Grid.Column="1"
+                           Text="{Binding Item.name}"
+                           FontSize="Micro" />
+                        <Label Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{Binding Item.calories} calories"
+                           FontSize="Micro" />
+                        <Label Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{Binding Item.fats} g of fat"
+                           FontSize="Micro" />
+                        <Label Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{Binding Item.carbs} g of carbs"
+                           FontSize="Micro" />
+                        <Label Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{Binding Item.proteins} g of protein"
+                           FontSize="Micro" />
+                        </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
+        <Grid x:Name="ItemsListView"
+          Grid.Row="1"
+          RowHeight="70"
+          ItemsSource="{Binding Items}"
+          SelectedItem="{Binding SelectedItem}">
+    </Grid>
+</ContentPage> 
